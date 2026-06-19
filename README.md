@@ -133,56 +133,115 @@ src/
 └── index.css           # OKLCH design tokens + global styles
 ```
 
-## 🤖 Use with AI Coding Tools
+## 🤖 AI 工具一键安装 & 自定义
 
-### Claude Code
+这个项目专门为 AI 编程工具设计——你可以用 Claude Code 或 Codex 一键下载、安装、运行，然后用自然语言让它帮你定制主页。
+
+---
+
+### Claude Code 安装使用
+
+**前置条件**：[安装 Claude Code](https://docs.anthropic.com/en/docs/claude-code/setup)（Anthropic 官方 CLI 工具）
 
 ```bash
-# 1. Clone the project
-git clone https://github.com/tczzx0428/personal-homepage.git
-cd personal-homepage
-
-# 2. Open with Claude Code
+# 第 1 步：让 Claude Code 帮你下载项目
+# 在终端任意位置打开 Claude Code：
 claude
 
-# 3. In Claude Code, run:
-# "npm install && npm run dev"
-# Claude will auto-detect the project and help you customize it
-
-# 4. Customize your homepage:
-# "帮我把个人信息改成我的简历" — upload your Word resume, AI fills everything
-# "加一个新section展示我的开源项目" — Claude adds a new section
-# "换个配色" — modify the theme
+# 在 Claude Code 对话中输入：
+# "帮我克隆并运行 https://github.com/tczzx0428/personal-homepage"
 ```
 
-### Codex (OpenAI)
-
-```bash
-# 1. Clone & enter project
+Claude Code 会自动执行：
+```
 git clone https://github.com/tczzx0428/personal-homepage.git
 cd personal-homepage
-
-# 2. Open with Codex
-codex
-
-# 3. In Codex session:
-# "Install deps and start the dev server"
-# → npm install && npm run dev
-
-# 4. Customize:
-# "Read my resume at ~/Desktop/resume.docx and fill in the profile"
-# → Codex uses the built-in DeepSeek integration to parse and auto-fill
+npm install
+npm run dev
 ```
 
-### Other AI Tools
+然后访问 `http://localhost:3000` 查看展示页，`/admin` 进入管理后台。
 
-This project works with any AI coding assistant that can read and edit files:
+**第 2 步：用自然语言定制**
 
-- **Cursor**: Open folder → Agent mode → "Customize this portfolio for me"
-- **Gemini CLI**: `gemini` → "Read DESIGN.md and help me customize the theme"
-- **GitHub Copilot**: Workspace agent → "Add a new blog section to Showcase.jsx"
+在 Claude Code 对话中直接说：
 
-All AI tools can leverage the project's built-in DeepSeek API integration (`src/data/api.js`) for resume parsing and certificate scanning.
+| 你想做的 | 对 Claude Code 说 |
+|---------|------------------|
+| 🧑 填入个人信息 | "帮我填写个人信息，我叫张三，是前端工程师" |
+| 📄 从简历导入 | "读取 ~/Desktop/我的简历.docx 解析并自动填入" |
+| 🎨 换主题 | "切换到暗夜黑金主题" |
+| ➕ 加新 section | "加一个博客 section，展示我的技术文章" |
+| 🔧 改样式 | "把强调色改成蓝色" |
+| 📤 导出部署 | "帮我 build 并部署到 Vercel" |
+
+**第 3 步：配置 AI 功能**
+
+1. 打开 `http://localhost:3000/admin`
+2. 填入你的 **DeepSeek API Key**
+3. 在管理后台或让 Claude Code 帮你调用 AI 解析简历、扫描证书
+
+> 💡 **提示**：项目里内置了 `DESIGN.md` 设计规范，Claude Code 会读取它来确保所有修改保持设计一致性。你也可以说 "读一下 DESIGN.md 然后给我建议怎么优化"。
+
+---
+
+### Codex 安装使用
+
+**前置条件**：[安装 Codex](https://github.com/openai/codex)（OpenAI 官方 CLI 工具）
+
+```bash
+# 在终端打开 Codex：
+codex
+
+# 在 Codex 对话中输入：
+# "Clone and set up https://github.com/tczzx0428/personal-homepage, install deps, start dev server"
+```
+
+Codex 会执行完整的环境搭建。启动后：
+
+```bash
+# 定制你的主页（在 Codex 对话中）：
+# "Open the admin panel, help me fill in my profile. My resume is at ~/Desktop/resume.docx"
+# → Codex 读取 Word 文档，通过项目内置的 DeepSeek API 自动解析填入
+
+# "Add a new skills section showing my tech stack with icons"
+# → Codex 修改 Showcase.jsx，遵循 DESIGN.md 的设计约束
+
+# "Switch to the Dark Noir theme and deploy to GitHub Pages"
+# → Codex 切换主题、build、配置部署
+```
+
+> 💡 **提示**：Codex 会自动识别项目的 `DESIGN.md` 和 `src/data/api.js`，利用 DeepSeek 集成做 AI 解析。如果你还没装 mammoth（Word 解析库），Codex 会帮你装上。
+
+---
+
+### Cursor / Windsurf / Copilot
+
+任何支持项目级上下文和文件编辑的 AI 工具都能用：
+
+| 工具 | 操作 |
+|------|------|
+| **Cursor** | `Cmd+I` 打开 Agent → "Clone and set up https://github.com/tczzx0428/personal-homepage" |
+| **Windsurf** | 打开项目文件夹 → Cascade → "Follow DESIGN.md to customize my portfolio" |
+| **Gemini CLI** | `gemini` → "Read the project at ./personal-homepage and help me deploy it" |
+| **GitHub Copilot** | 在 VS Code 中打开项目 → Copilot Edits → "根据 DESIGN.md 帮我加一个作品集 section" |
+
+### 常用自然语言指令（中/英）
+
+```
+✅ "填入我的个人信息，简历在~/Desktop/resume.pdf"
+✅ "帮我换到暗夜黑金主题"
+✅ "把我的证书扫描件识别并填入"
+✅ "按DESIGN.md规范加一个技术博客section"
+✅ "导出数据并部署到Netlify"
+
+✅ "Fill in my profile from ~/Desktop/cv.docx using the built-in DeepSeek parser"
+✅ "Switch to Mineral Slate theme"
+✅ "Add a 'Talks & Presentations' section following DESIGN.md"
+✅ "Build and deploy to Vercel"
+```
+
+所有 AI 工具都会自动利用项目内置的 DeepSeek API 集成（`src/data/api.js`）来做简历解析和证书扫描。
 
 ## 📄 License
 
