@@ -4,6 +4,44 @@
 [![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-8-purple.svg)](https://vitejs.dev)
 
+> 🏠 一个自带 AI 的个人主页搭建工具。拍照上传证书、拖入简历自动解析、三套主题一键切换，五分钟搭好你的专业个人展示页。
+
+---
+
+## 🇨🇳 中文介绍
+
+### 这是什么？
+
+一个**本地优先、AI 驱动**的个人主页生成器。不需要后端、不需要数据库、不需要写代码——打开浏览器就能管理你的证书、履历、论文、比赛成果，然后生成一个杂志编辑风格的专业展示页。
+
+### 能做什么？
+
+| 功能 | 说明 |
+|------|------|
+| 🤖 **AI 简历解析** | 上传 Word/TXT 简历，DeepSeek 自动提取姓名、教育、工作、技能，填入表单 |
+| 📷 **AI 证书扫描** | 拍一张证书照片，AI 自动识别名称、机构、日期，结构化存储 |
+| 🎨 **三套主题** | 杂志浅色 / 暗夜黑金 / 矿物灰，一键切换 |
+| 📄 **论文展示** | 学术期刊目录风格，编号、作者、期刊、摘要 |
+| 🏆 **比赛成果** | 国家级/省市级分类，奖牌 emoji 直观展示 |
+| 📅 **履历时间线** | 教育+工作经历，左侧日期右侧详情 |
+| 💾 **纯本地存储** | 所有数据在浏览器 localStorage 里，不上传任何服务器 |
+| 📥 **导入导出** | JSON 格式一键备份恢复 |
+
+### 为什么做这个？
+
+市面上建个人主页要么要写代码（Hugo/Jekyll/Hexo），要么是臃肿的 SaaS（Wix/WordPress），要么只能展示不能管理。这个项目把「管理」和「展示」合在一起，加上 AI 帮你自动录入——你只需要上传文件、确认信息，主页就有了。
+
+### 适合谁？
+
+- 🎓 **学生/研究者**：展示论文、竞赛、学术成果
+- 💼 **求职者**：替代传统 PDF 简历，链接发出去就是一页专业展示
+- 👨‍💻 **开发者**：Fork 一份，自己改主题、加 section
+- 🤖 **AI 爱好者**：体验 DeepSeek + 前端结合的轻量 AI 应用
+
+---
+
+## 🇬🇧 English
+
 A self-hosted personal portfolio builder with AI-powered content extraction. Build your professional homepage in minutes — manage certificates, resume, papers, and competition achievements, then showcase with magazine-editorial design.
 
 **Live demo**: Deploy to Vercel/Netlify in one click. Fill your data via `/admin` and preview at `/`.
